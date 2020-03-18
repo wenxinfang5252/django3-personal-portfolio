@@ -1,0 +1,41 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %} <!-- to use static in template-->
+
+{% block content %}
+<br>
+
+<div class="row justify-content-center my-3">
+  <div class="col-md-12 text-center">
+    <h1 id="hometext">Find your Motivation and Don't Lose it</h1>
+    <p>Wenxin Fang is a Graduate Student at University of Illinois at Urbana-Champaign and is on her Way to Become a Software Engineer.</p>
+  </div>
+</div>
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/mypic1.jpeg' %}" class="img-fluid">
+  </div>
+</div>
+
+<h2 class="mt-5">Stay Tuned...</h2>
+<hr>
+<div class="row">
+   {% for project in projects %} <!-- load the database object using double curly brackets and do a foor loop to this object(list)-->
+   <div class="col-lg-4 col-md-6">
+    {% if project.url %}
+     <a href="{{ project.url }}">
+       <img src="{{ project.image.url }}" class="img-fluid mb-2">
+     </a>
+     {% else %}
+
+     <img src="{{ project.image.url }}" class="img-fluid mb-2">
+     {% endif %}
+     <h3>{{ project.title }}</h3>
+     <p>{{ project.description }}</p>
+
+   </div>
+   {% endfor %}
+ </div>
+
+{% endblock %}
