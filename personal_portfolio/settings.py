@@ -25,7 +25,7 @@ SECRET_KEY = '1^o#s+v)b-2jp9wz8m%lacr#yur#lwx+s)vv7&$s2e0!mw^o&!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['wenxinfang.pythonanywhere.com']
+ALLOWED_HOSTS = ['www.wenxinfang.net']
 
 
 # Application definition
@@ -124,3 +124,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #create location (media folder) to save image files
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like no local file. You must be on production")
